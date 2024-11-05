@@ -1,0 +1,22 @@
+<div class="row top-padding">
+    <section class="twelve columns">
+      <div class="field">
+        <label soho-label for="the-dataset-lookup"
+          >Lookup with source DATASET</label
+        >
+        <input 
+        soho-lookup
+        #sohoLookupComponent
+          id="the-dataset-lookup"
+          [dataset]="dataset"
+          field="productId"
+          [multiselect]="true"
+          [autoCompleteSettings] ="autoCompleteSettings"
+        />
+      </div>
+    </section>
+  </div>
+  <div>
+    <p>DATASET </p>
+    <p>{{ dataset.length | json }}</p>
+  </div>
