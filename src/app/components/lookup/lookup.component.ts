@@ -12,16 +12,17 @@ import { SohoAutoCompleteComponent, SohoAutoCompleteModule, SohoLookupComponent,
   styleUrl: './lookup.component.css'
 })
 export class LookupComponent {
-  @ViewChild("sohoLookupComponent", { static: true })
+  @ViewChild("sohoLookupComponent", { static: false })
   sohoLookupComponent?: SohoLookupComponent;
 
   ngOnChanges(changes: SimpleChanges): void {
+    (this.sohoLookupComponent as any).lookup.data= this.dataset
     this.sohoLookupComponent?.updated();
-    this.sohoLookupComponent?.updateDataset(this.dataset, {});
+    //this.sohoLookupComponent?.updateDataset(this.dataset, {});
   }
   ngAfterViewInit(): void {
     this.sohoLookupComponent?.updated();
-    this.sohoLookupComponent?.updateDataset(this.dataset, {});
+    //this.sohoLookupComponent?.updateDataset(this.dataset, {});
   }
   //model = ["first", "third"];
   public autoCompleteSettings: SohoLookupAutoComplete = {
