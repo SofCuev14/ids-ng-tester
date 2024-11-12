@@ -4,7 +4,7 @@ import { SohoAutoCompleteComponent, SohoAutoCompleteModule, SohoComponentsModule
 import { SohoLocaleInitializerModule } from '@modules/locale-initializer/locale-initializer.module';
 import { FormsModule } from '@angular/forms';
 
-const exportedModules = [CommonModule, SohoComponentsModule, FormsModule ];
+const exportedModules = [CommonModule, SohoComponentsModule, FormsModule];
 
 @NgModule({
   declarations: [],

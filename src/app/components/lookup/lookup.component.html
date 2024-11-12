@@ -2,8 +2,26 @@
   <section class="twelve columns">
     <div class="field">
       <label soho-label for="the-dataset-lookup">Lookup with source DATASET</label>
-      <input soho-lookup #sohoLookupComponent id="the-dataset-lookup" [dataset]="dataset" field="productId"
-        [multiselect]="true" [autoCompleteSettings]="autoCompleteSettings" />
+      <input soho-lookup #sohoLookupComponent 
+        id="the-dataset-lookup" 
+        [dataset]="dataset" 
+        field="productId"
+        [multiselect]="true" 
+        [autoCompleteSettings]="autoCompleteSettings" 
+        [source]="filterLookUpSourceData1" 
+        [toolbar]="{
+          results: true,
+          dateFilter: false,
+          keywordFilter: true,
+          advancedFilter: true,
+          actions: true,
+          views: true,
+          rowHeight: false,
+          collapsibleFilter: false,
+          fullWidth: true
+        }"
+        [options]="options"
+      />
     </div>
     <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" (click)="onButtonClick()">
       Change Dataset

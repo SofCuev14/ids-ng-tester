@@ -67,6 +67,63 @@ export class LookupComponent {
       console.log(this.sohoLookupComponent.dataset);
     }
   }
+  filterLookUpSourceData1() {
+    let getData: any = (
+      request: any,
+      response:  any
+    ): void => {
+        let filteredData: string | any[] = [];
+        const pageSize = request.pagesize || 10;
+            const pageNumber = request.activePage || 1;
+        const start = (pageNumber - 1) * pageSize;
+        const paginatedData = filteredData.slice(start, start + pageSize);
+
+        response(paginatedData, {
+          ...request,
+          firstPage: pageNumber === 1,
+          lastPage: start + pageSize >= filteredData.length,
+          total: filteredData.length,
+          grandTotal: this.dataset.length,
+        });
+    };
+    return getData;
+  }
+  private getAssetColumns(): Array<any> {
+    const columns = [
+      {
+        id: "templateId",
+        sortable: false,
+        field: "templateId",
+      },
+      {
+        id: "templateDisplayName",
+        name: "Template",
+        field: "displayName",
+        sortable: false,
+      },
+    ];
+    const sohoGridColumns: Array<any> = [];
+    columns.forEach((column) => {
+      const sohoGridColumn = {
+        name: column.name,
+        field: column.field,
+        sortable: column.sortable,
+        id: column.id,
+      } as any;
+      sohoGridColumns.push(sohoGridColumn);
+    });
+    return sohoGridColumns;
+  }
+
+  options = {
+      columns: this.getAssetColumns(),
+      source:this.filterLookUpSourceData1(),
+      emptyMessage: {
+        title: 'Record not shared',
+        info: 'Search for user or sales team',
+        icon: 'icon-empty-no-users-new',
+      }
+    }
 
   dataset: Order[] = [
     {
