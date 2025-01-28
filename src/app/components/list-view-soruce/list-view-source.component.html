@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Source not working</h2>
+  </div>
+  <div class="card-content">
+    <soho-listview 
+    [source]="listViewSource" 
+    [paging]="true" 
+    [pagesize]="5" 
+    [searchable]="searchable"
+    [emptyMessage]="emptyMessage" 
+    [selectable]="'single'" 
+    [template]="template">
+      >
+      <input soho-searchfield placeholder="Search" [clearable]="true" [placeholder]="'Enter name'"
+        [ngStyle]="searchable ? {} : { display: 'hidden' }" [class.hidden]="!searchable" />
+    </soho-listview>
+  </div>
+</div>
+
+<div style="margin: 100px;"></div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Using dataset but paging issue</h2>
+  </div>
+  <div class="card-content">
+    <soho-listview
+      [dataset]="dataset"
+      [paging]="true"
+      [pagesize]="5"
+      [searchable]="searchable"
+      [emptyMessage]="emptyMessage"
+      [selectable]="'single'"
+    >
+      <input
+        soho-searchfield
+        placeholder="Search"
+        [clearable]="true"
+        [placeholder]="'Enter template name, number'"
+        [ngStyle]="searchable ? {} : { display: 'hidden' }"
+        [class.hidden]="!searchable"
+      />
+      @for (data of dataset; track data) {
+      <li soho-listview-item [disabled]="!!data.disabled">
+        @if (data.header) {
+        <p soho-listview-header>{{ data.header }}</p>
+        } @if (data.subheader) {
+        <p soho-listview-subheader>{{ data.subheader }}</p>
+        } @if (data.micro) {
+        <p soho-listview-micro>{{ data.micro }}</p>
+        }
+      </li>
+      }
+    </soho-listview>
+  </div>
+</div>
