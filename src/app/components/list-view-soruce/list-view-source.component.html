@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Empty Message as Attribute</h2>
+  </div>
+  <div class="card-content">
+    <soho-listview 
+    [source]="listViewSource" 
+    [paging]="true" 
+    [pagesize]="5" 
+    [searchable]="searchable"
+    [emptyMessage]="emptyMessage" 
+    [selectable]="'single'" 
+    [template]="template">
+      >
+      <input soho-searchfield placeholder="Search" [clearable]="true" [placeholder]="'Enter template name, number'"
+        [ngStyle]="searchable ? {} : { display: 'hidden' }" [class.hidden]="!searchable" />
+    </soho-listview>
+  </div>
+</div>
